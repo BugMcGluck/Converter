@@ -9,62 +9,18 @@
         android:layout_height="wrap_content"
         android:gravity="right|center_vertical"
         android:inputType="numberDecimal"
-        android:maxLines="1" >
+        android:maxLength="11"
+        android:maxLines="1"
+        android:textSize="30sp"
+        android:textStyle="bold" >
 
         <requestFocus />
     </EditText>
 
-    <RelativeLayout
+    <ListView
+        android:id="@+id/lv"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp" >
-
-        <TextView
-            android:id="@+id/textViewConvertedValue1"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_alignParentRight="true"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_centerVertical="true"
-            android:gravity="right"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <EditText
-            android:id="@+id/editTextCourse1"
-            android:layout_width="78dp"
-            android:layout_height="fill_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_centerVertical="true"
-            android:gravity="left"
-            android:inputType="numberDecimal" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp" >
-
-        <TextView
-            android:id="@+id/textViewConvertedValue2"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_alignParentRight="true"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_centerVertical="true"
-            android:gravity="right"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <EditText
-            android:id="@+id/editTextCourse2"
-            android:layout_width="78dp"
-            android:layout_height="fill_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_centerVertical="true"
-            android:gravity="left"
-            android:inputType="numberDecimal" />
-    </RelativeLayout>
+        android:layout_height="wrap_content" >
+    </ListView>
 
 </LinearLayout>

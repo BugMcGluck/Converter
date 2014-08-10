@@ -1,36 +1,50 @@
 package grischenkomaxim.converter;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
 
 public class MainActivity extends ActionBarActivity implements OnEditorActionListener{
 
-    EditText enterValue, course1, course2;
-    TextView convertedValue1, convertedValue2;
+    public static EditText enterValue;
+    List<Converter> converters = new ArrayList<Converter>();
+    ConverterAdapter adapter;
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        enterValue = (EditText) findViewById(R.id.editTextEnterValue);
-        convertedValue1 = (TextView) findViewById(R.id.textViewConvertedValue1);
-        convertedValue2 = (TextView) findViewById(R.id.textViewConvertedValue2);
-        course1 = (EditText) findViewById(R.id.editTextCourse1);
-        course2 = (EditText) findViewById(R.id.editTextCourse2);
         
-        enterValue.setOnEditorActionListener(this);
+        enterValue = (EditText) findViewById(R.id.editTextEnterValue);
+//        enterValue.setOnEditorActionListener(this);
+
+        fillData();
+		adapter =  new ConverterAdapter(this, converters);
+		
+		ListView lvMain = (ListView) findViewById(R.id.lv);
+	    lvMain.setAdapter(adapter);
     }
 
 
-    @Override
+    void fillData(){
+    	for (int i = 0; i < 3; i++){
+    		converters.add(new Converter(new BigDecimal(i * 100F + 100), "Валюта " + (i + 1), BigDecimal.ZERO));
+    	}
+    }
+	
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -53,17 +67,18 @@ public class MainActivity extends ActionBarActivity implements OnEditorActionLis
 	@Override
 	public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2) {
 		// TODO Auto-generated method stub
-		if (course1.getText().length() != 0 && course2.getText().length() != 0 && enterValue.getText().length() != 0) {
-		convertedValue1.setText(String.valueOf(Float.valueOf(course1.getText().toString()) * 
-					Float.valueOf(enterValue.getText().toString())));
-		convertedValue2.setText(String.valueOf(Float.valueOf(course2.getText().toString()) * 
-					Float.valueOf(enterValue.getText().toString())));
-		return true;
-		}
-		else{
-			convertedValue1.setText("0");
-			convertedValue2.setText("0");
-			return false;
-		}
+//		if (course1.getText().length() != 0 && course2.getText().length() != 0 && enterValue.getText().length() != 0) {
+//		convertedValue1.setText(String.valueOf(Float.valueOf(course1.getText().toString()) * 
+//					Float.valueOf(enterValue.getText().toString())));
+//		convertedValue2.setText(String.valueOf(Float.valueOf(course2.getText().toString()) * 
+//					Float.valueOf(enterValue.getText().toString())));
+//		return true;
+//		}
+//		else{
+//			convertedValue1.setText("0");
+//			convertedValue2.setText("0");
+//			return false;
+//		}
+		return false;
 	}
 }
