@@ -4,11 +4,16 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,6 +40,7 @@ public class MainActivity extends ActionBarActivity implements OnEditorActionLis
 		
 		ListView lvMain = (ListView) findViewById(R.id.lv);
 	    lvMain.setAdapter(adapter);
+	    registerForContextMenu(findViewById(R.id.lv));
     }
 
 
@@ -81,4 +87,24 @@ public class MainActivity extends ActionBarActivity implements OnEditorActionLis
 //		}
 		return false;
 	}
+
+
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		// TODO Auto-generated method stub
+		super.onCreateContextMenu(menu, v, menuInfo);
+		v.setBackgroundColor(color.background_dark);
+		MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.context, menu);
+	    
+	}
+
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		return super.onContextItemSelected(item);
+	}
+	
 }

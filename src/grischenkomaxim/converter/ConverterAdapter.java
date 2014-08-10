@@ -70,8 +70,6 @@ public class ConverterAdapter extends BaseAdapter {
 	    ((EditText) view.findViewById(R.id.editTextCourse)).setOnEditorActionListener(editListner);
 	    ((EditText) view.findViewById(R.id.editTextCourse)).setTag(position);
 	    
-	    view.setOnLongClickListener(longClickListner);
-	    
 	    return view;
 	}
 	
@@ -106,12 +104,5 @@ public class ConverterAdapter extends BaseAdapter {
 		    }
 	}
 	
-	OnLongClickListener longClickListner = new OnLongClickListener() {
-		
-		@Override
-		public boolean onLongClick(View v) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-	};
+
 }
