@@ -8,6 +8,7 @@ import android.content.Context;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -66,9 +67,11 @@ public class ConverterAdapter extends BaseAdapter {
 	    }
 	    ((EditText) view.findViewById(R.id.editTextCourse)).setText(c.course.toString());
 
-	    ((EditText) view.findViewById(R.id.editTextCourse)).setOnEditorActionListener(listner);
+	    ((EditText) view.findViewById(R.id.editTextCourse)).setOnEditorActionListener(editListner);
 	    ((EditText) view.findViewById(R.id.editTextCourse)).setTag(position);
-
+	    
+	    view.setOnLongClickListener(longClickListner);
+	    
 	    return view;
 	}
 	
@@ -76,7 +79,7 @@ public class ConverterAdapter extends BaseAdapter {
 	    return ((Converter) getItem(position));
 	  }
 
-	OnEditorActionListener listner = new OnEditorActionListener() {
+	OnEditorActionListener editListner = new OnEditorActionListener() {
 		
 		@Override
 		public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -102,4 +105,13 @@ public class ConverterAdapter extends BaseAdapter {
 		    	c.summ = BigDecimal.ZERO;
 		    }
 	}
+	
+	OnLongClickListener longClickListner = new OnLongClickListener() {
+		
+		@Override
+		public boolean onLongClick(View v) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+	};
 }
