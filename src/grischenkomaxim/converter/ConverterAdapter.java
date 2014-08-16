@@ -70,6 +70,7 @@ public class ConverterAdapter extends BaseAdapter {
 	    ((EditText) view.findViewById(R.id.editTextCourse)).setOnEditorActionListener(editListner);
 	    ((EditText) view.findViewById(R.id.editTextCourse)).setTag(position);
 	    
+	    
 	    return view;
 	}
 	

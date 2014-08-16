@@ -5,4 +5,6 @@
     <string name="action_settings">Настройки</string>
     <string name="summ">Сумма</string>
     <string name="course">Курс</string>
+    <string name="context_add">Добавить</string>
+    <string name="context_delete">Удалить</string>
 </resources>

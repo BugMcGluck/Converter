@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.R.color;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
@@ -14,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,6 +29,7 @@ public class MainActivity extends ActionBarActivity implements OnEditorActionLis
     public static EditText enterValue;
     List<Converter> converters = new ArrayList<Converter>();
     ConverterAdapter adapter;
+    int selectedPosition;
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +45,18 @@ public class MainActivity extends ActionBarActivity implements OnEditorActionLis
 		
 		ListView lvMain = (ListView) findViewById(R.id.lv);
 	    lvMain.setAdapter(adapter);
-	    registerForContextMenu(findViewById(R.id.lv));
+	    registerForContextMenu(lvMain);
+	    
+	    lvMain.setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Log.d("!", "Position "+ position);
+				selectedPosition = position;
+				return false;
+			}
+	    });
     }
 
 
@@ -73,18 +89,7 @@ public class MainActivity extends ActionBarActivity implements OnEditorActionLis
 	@Override
 	public boolean onEditorAction(TextView arg0, int arg1, KeyEvent arg2) {
 		// TODO Auto-generated method stub
-//		if (course1.getText().length() != 0 && course2.getText().length() != 0 && enterValue.getText().length() != 0) {
-//		convertedValue1.setText(String.valueOf(Float.valueOf(course1.getText().toString()) * 
-//					Float.valueOf(enterValue.getText().toString())));
-//		convertedValue2.setText(String.valueOf(Float.valueOf(course2.getText().toString()) * 
-//					Float.valueOf(enterValue.getText().toString())));
-//		return true;
-//		}
-//		else{
-//			convertedValue1.setText("0");
-//			convertedValue2.setText("0");
-//			return false;
-//		}
+		adapter.notifyDataSetChanged();
 		return false;
 	}
 
@@ -94,9 +99,15 @@ public class MainActivity extends ActionBarActivity implements OnEditorActionLis
 			ContextMenuInfo menuInfo) {
 		// TODO Auto-generated method stub
 		super.onCreateContextMenu(menu, v, menuInfo);
-		v.setBackgroundColor(color.background_dark);
 		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.context, menu);
+		switch(v.getId()){
+		case R.id.lv:
+			inflater.inflate(R.menu.context_list, menu);
+			break;
+		case R.id.ll:
+			inflater.inflate(R.menu.context_list, menu);
+			break;
+		}
 	    
 	}
 
@@ -104,6 +115,16 @@ public class MainActivity extends ActionBarActivity implements OnEditorActionLis
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
+		switch(item.getItemId()){
+		case R.id.add:
+			converters.add(new Converter(new BigDecimal(100F), "Новый", BigDecimal.ZERO));
+			adapter.notifyDataSetChanged();
+			break;
+		case R.id.delete:
+			converters.remove(selectedPosition);
+			adapter.notifyDataSetChanged();
+			break;
+		}
 		return super.onContextItemSelected(item);
 	}
 	
