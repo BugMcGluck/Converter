@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:inputType="numberDecimal"
         android:lines="1"
         android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceLarge" />

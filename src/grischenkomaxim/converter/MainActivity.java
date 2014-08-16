@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.R.color;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -46,6 +44,7 @@ public class MainActivity extends ActionBarActivity implements OnEditorActionLis
 		ListView lvMain = (ListView) findViewById(R.id.lv);
 	    lvMain.setAdapter(adapter);
 	    registerForContextMenu(lvMain);
+	    registerForContextMenu(findViewById(R.id.ll));
 	    
 	    lvMain.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
@@ -105,7 +104,7 @@ public class MainActivity extends ActionBarActivity implements OnEditorActionLis
 			inflater.inflate(R.menu.context_list, menu);
 			break;
 		case R.id.ll:
-			inflater.inflate(R.menu.context_list, menu);
+			inflater.inflate(R.menu.context, menu);
 			break;
 		}
 	    
