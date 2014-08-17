@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right|center_vertical"
+        android:hint="@string/hint_value"
         android:inputType="numberDecimal"
         android:maxLength="11"
         android:maxLines="1"

@@ -82,15 +82,15 @@ public class ConverterAdapter extends BaseAdapter {
 		@Override
 		public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 			// TODO Auto-generated method stub
-			Converter c = getConverter((Integer) v.getTag());
-			if (v.getText().length() != 0){
-				c.course = new BigDecimal(v.getText().toString()); 
-			}
-			else{
-				c.course = BigDecimal.ZERO;
-			}
-			updateSumm(c);
-			
+//			Converter c = getConverter((Integer) v.getTag());
+//			if (v.getText().length() != 0){
+//				c.course = new BigDecimal(v.getText().toString()); 
+//			}
+//			else{
+//				c.course = BigDecimal.ZERO;
+//			}
+//			updateSumm(c);
+			notifyDataSetChanged();
 			return false;
 		}
 	};

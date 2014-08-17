@@ -7,4 +7,14 @@
     <string name="course">Курс</string>
     <string name="context_add">Добавить</string>
     <string name="context_delete">Удалить</string>
+    <string name="description">Название</string>
+    <string name="yes">Да</string>
+    <string name="cancel">Отмена</string>
+    <string name="edit">Изменить</string>
+    <string name="hint_description">Введите название конвертера</string>
+    <string name="hint_course">Введите величину курса</string>
+    <string name="converters_count">converters_count</string>
+    <string name="converter">converter</string>
+    <string name="hint_value">Введите сумму для конвертации</string>
+    <string name="value">value</string>
 </resources>
