@@ -15,6 +15,6 @@
     <string name="hint_course">Введите величину курса</string>
     <string name="converters_count">converters_count</string>
     <string name="converter">converter</string>
-    <string name="hint_value">Введите сумму для конвертации</string>
+    <string name="hint_value">Введите сумму</string>
     <string name="value">value</string>
 </resources>

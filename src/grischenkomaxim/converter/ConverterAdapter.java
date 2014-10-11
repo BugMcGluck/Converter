@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
@@ -64,10 +63,10 @@ public class ConverterAdapter extends BaseAdapter {
 	    else{
 	    	((TextView) view.findViewById(R.id.summ)).setText("0");
 	    }
-	    ((EditText) view.findViewById(R.id.editTextCourse)).setText(c.course.toString());
+	    ((TextView) view.findViewById(R.id.editTextCourse)).setText(c.course.toString());
 
-	    ((EditText) view.findViewById(R.id.editTextCourse)).setOnEditorActionListener(editListner);
-	    ((EditText) view.findViewById(R.id.editTextCourse)).setTag(position);
+	    ((TextView) view.findViewById(R.id.editTextCourse)).setOnEditorActionListener(editListner);
+	    ((TextView) view.findViewById(R.id.editTextCourse)).setTag(position);
 	    
 	    
 	    return view;
